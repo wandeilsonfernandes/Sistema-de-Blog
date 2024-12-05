@@ -30,13 +30,13 @@
                         {% for comentario in comentarios %}
                             <li class="list-group-item" style="margin-bottom: 10px;">
                                 <p>
-                                    <strong>{{ comentario.autor }}</strong> em 
-                                    <span class="text-muted">{{ comentario.data_criacao|date:"d/m/Y H:i" }}</span>
+                                    <strong>{{ comentario.autor }}</strong> 
+                                    <span class="text-muted">em {{ comentario.data_criacao|date:"d/m/Y H:i" }}</span>
                                 </p>
                                 <p>{{ comentario.conteudo }}</p>
                                 {% if user == comentario.autor or user == post.autor %}
-                                    <a href="{% url 'remover_comentario' comentario.pk post.pk %}" class="btn btn-danger btn-sm">Excluir</a>
-                                {% endif %}
+                                <a href="{% url 'remover_comentario' pk_post=post.pk pk_comentario=comentario.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                            {% endif %}
                             </li>
                         {% endfor %}
                     </ul>
@@ -46,5 +46,21 @@
             </div>
         </div>
     </div>
+
+    <!-- Formulário para Adicionar Comentário -->
+    {% if user.is_authenticated %}
+        <div class="add-comment-section mt-5">
+            <h4>Deixe um comentário</h4>
+            <form action="{% url 'adicionar_comentario' post.pk %}" method="post" class="mt-3">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <textarea name="conteudo" rows="3" class="form-control" placeholder="Escreva seu comentário aqui..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Comentar</button>
+            </form>
+        </div>
+    {% else %}
+        <p class="text-muted mt-5">Faça <a href="{% url 'login' %}">login</a> para comentar.</p>
+    {% endif %}
 </div>
 {% endblock %}
