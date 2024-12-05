@@ -3,12 +3,36 @@
 {% block title %}Lista de Posts{% endblock %}
 
 {% block content %}
-<h2>Lista de Posts</h2>
-<ul>
+<h2 class="text-center mb-4 style="font-family: 'Roboto', sans-serif; color: #242424;" >Últimos Posts</h2>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     {% for post in posts %}
-        <li>
-            <a href="{% url 'detalhe_post' post.pk %}">{{ post.titulo }}</a>
-        </li>
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.titulo }}</h5>
+                <p class="card-text text-muted">
+                    Por <strong>{{ post.autor }}</strong> em {{ post.data_criacao|date:"d/m/Y H:i" }}
+                </p>
+                <p class="card-text">
+                    {{ post.conteudo|truncatechars:100 }}
+                </p>
+                <a href="{% url 'detalhe_post' post.pk %}" class="btn btn-primary btn-sm">Leia mais</a>
+            </div>
+            {% if post.categorias.exists %}
+            <div class="card-footer">
+                <small class="text-muted">
+                    Categorias:
+                    {% for categoria in post.categorias.all %}
+                        <span class="badge bg-secondary">{{ categoria.nome }}</span>
+                    {% endfor %}
+                </small>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center">Nenhum post encontrado.</p>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
