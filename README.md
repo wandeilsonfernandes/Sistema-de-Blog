@@ -4,6 +4,17 @@ Bem-vindo ao **BlogX**, uma plataforma simples e intuitiva para criar, visualiza
 Este README contém todas as informações que você precisa para configurar, executar e explorar o projeto.
 
 ---
+## Tela Inicial
+![Tela Inicial](https://i.imgur.com/A5fCINY.png)
+## Tela de Post 
+![Tela de Post](https://i.imgur.com/AlUgGMw.png)
+## Tela de Login
+ ![Tela de Login](https://i.imgur.com/LeERK2s.png)
+## Tela de Registro
+![Tela de Registro](https://i.imgur.com/egCu7we.png)
+## Tela de Criar Post
+![Tela de Criar Post](https://i.imgur.com/Kds50hA.png)
+
 
 ## 🎯 Funcionalidades Principais
 ### 🔓 Sistema de Autenticação
@@ -122,5 +133,4 @@ Adoraríamos contar com suas contribuições! 💡
 
 ---
 
-👨‍💻 **Desenvolvido por você!** 🚀  
 🎉 Obrigado por conferir o projeto! Caso tenha dúvidas, não hesite em perguntar. 😊
